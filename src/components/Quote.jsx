@@ -12,18 +12,13 @@ export default function Quote() {
     }
 
     const fetchData = useCallback(async () => {
-        let number = getRandomIntInclusive(1, 1000);
         try {
-            const res = await fetch(`http://numbersapi.com/${number}`);
+            const res = await fetch(`https://api.adviceslip.com/advice`);
             if (!res.ok) {
                 throw new Error(`HTTP error! Status: ${res.status}`);
             }
-            let fact = await res.text();
-            if (fact.includes("is a number for which we're missing a fact")) {
-                await fetchData();
-                return;
-            }
-            setData(fact)
+            let fact = await res.json();
+            setData(fact.slip.advice);
         } catch (err) {
             setError(err.message || "Unknown error");
         } finally {
@@ -42,7 +37,7 @@ export default function Quote() {
             <div className="m-4 border-2 p-8 w-96 text-center">
                 {data}
             </div>
-            <button className="pt-4 pb-4 pl-8 pr-8 border-2 w-fit m-4 cursor-pointer rounded-full bg-purple-950 text-white hover:border-purple-300" onClick={fetchData}>New Fact</button>
+            <button className="pt-4 pb-4 pl-8 pr-8 border-2 w-fit m-4 cursor-pointer rounded-full bg-purple-950 text-white hover:border-purple-300" onClick={fetchData}>New Advice</button>
         </div>
     );
 }
