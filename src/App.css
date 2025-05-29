@@ -1,0 +1,7 @@
+body, #root{
+  height: 100vh
+}
+body{
+  background-color: #18181b;
+  color: white;
+}
