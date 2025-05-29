@@ -1,3 +1,3 @@
-# Random Number Fact
+# Random Advice
 
-A small, quick, implementation of the [Numbers API](http://numbersapi.com/#42). Made with Vite and React.
+A small, quick, implementation of the [Advice Slip JSON API](https://api.adviceslip.com/). Made with Vite and React.
